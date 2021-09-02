@@ -1,0 +1,12 @@
+# Jacob is 30 year old Male working as System Engineer at a Firm.
+# Represent Jacob's information (Name, Sex, Age, Title) in YAML Format.
+# Create a dictonary named Employee and define properties under it.
+
+# Update the Yaml file to represent the Projects assigned to Jacob.
+# Remember Jacob works on multiple projects - Automation and Support
+
+Employee:
+  Name: Jacob
+  Sex: Male
+  Age: 30
+  Title: Systems Engineer
