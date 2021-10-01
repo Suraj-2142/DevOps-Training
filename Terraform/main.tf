@@ -20,3 +20,7 @@ resource "aws_instance" "web" {
     Name = "Demo-Instance"
   }
 }
+
+output "private_ip" {
+  value = aws_instance.web.private_ip  
+}
