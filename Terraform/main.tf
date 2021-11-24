@@ -1,8 +1,8 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
-      version = "3.61.0"
+      source  = "hashicorp/aws"
+      version = "3.66.0"
     }
   }
 }
@@ -12,15 +12,17 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-09e67e426f25ce0d7"
+  ami           = "ami-083654bd07b5da81d"
   instance_type = "t2.micro"
-  key_name      = "Ajinkya"
-
   tags = {
-    Name = "Demo-Instance"
+    Name = "HelloWorld"
   }
 }
 
-output "private_ip" {
-  value = aws_instance.web.private_ip  
+resource "aws_instance" "web_1" {
+  ami           = "ami-083654bd07b5da81d"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "Webserver"
+  }
 }
