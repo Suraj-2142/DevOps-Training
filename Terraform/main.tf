@@ -12,11 +12,19 @@ provider "aws" {
 }
 
 variable "image_id" {
-  type = string
-  default = "ami-083654bd07b5da81d"
+  type        = string
+  default     = "ami-083654bd07b5da81d"
   description = "This is AMI ID"
 }
 
+locals {
+  common_tags = {
+    service_name = "Demo"
+    owner        = "Ajinkya"
+    Batch        = "B7007"
+  }
+
+}
 
 resource "aws_key_pair" "IaC" {
   key_name   = "IaC"
@@ -24,13 +32,11 @@ resource "aws_key_pair" "IaC" {
 }
 
 resource "aws_instance" "web" {
-  ami           = var.image_id
-  key_name      = "IaC"
-  instance_type = "t2.micro"
+  ami             = var.image_id
+  key_name        = "IaC"
+  instance_type   = "t2.micro"
   security_groups = ["allow_ssh"]
-  tags = {
-    Name = "CreatedByIaC"
-  }
+  tags            = local.common_tags
 }
 
 resource "aws_security_group" "allow_ssh" {
@@ -58,4 +64,12 @@ resource "aws_security_group" "allow_ssh" {
   tags = {
     Name = "allow_ssh"
   }
+}
+
+output "pub_ip" {
+  value = aws_instance.web.public_ip
+}
+
+output "pri_ip" {
+  value = aws_instance.web.private_ip
 }
