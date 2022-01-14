@@ -11,7 +11,3 @@ provider "aws" {
  region = "us-east-1"
  
 }
-
-SURAJ B Melshankare.
-Thank you.
-2142
