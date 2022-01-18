@@ -14,14 +14,14 @@ provider "aws" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "Terrafor-Key-suraj"
-  public_key = file('.\id_rsa.pub')
+  public_key = file(".\id_rsa.pub")
 }
 
 resource "aws_instance" "Terra-Demo" {
   ami           = "ami-001089eb624938d9f"
   instance_type = "t2.micro"
   subnet_id = "subnet-01a956015fff8a630"
-  key_name = "SURAJ"
+  key_name = "aws_key_pair.deployer.key_name"
 
   tags = {
     Name = "TERRAFORM-EC2"
