@@ -12,10 +12,11 @@ provider "aws" {
  
 }
 
+/*
 resource "aws_key_pair" "deployer" {
-  key_name   = "Terrafor-Key-suraj"
+  key_name   = "SURAJ"
   public_key = "SURAJ"
-}
+//}*/
 
 resource "aws_instance" "Terra-Demo" {
   ami           = "ami-001089eb624938d9f"
