@@ -14,7 +14,7 @@ provider "aws" {
 
 /*
 resource "aws_key_pair" "deployer" {
-  key_name   = "SURAJ"
+  key_name   = "Terrafor-Key-suraj"
   public_key = "SURAJ"
 //}*/
 
