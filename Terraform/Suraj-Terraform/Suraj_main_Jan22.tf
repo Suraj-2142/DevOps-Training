@@ -1,36 +1,36 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "3.72.0"
-    }
+
+locals {
+  # Common tags to be assigned to all resources
+  service_name= "Server"
+         owner="AWS"
+        
+  common_tags = {
+          name="local_Ec2"
+      Service = local.service_name
+      Owner   = local.owner
   }
 }
 
-provider "aws" {
- region = "us-east-2"
- 
-}
+resource "aws_instance" "Terra-Demo-EC2" {
 
-/*
-resource "aws_key_pair" "deployer" {
-  key_name   = "Terrafor-Key-suraj"
-  public_key = "SURAJ"
-  Git push for 20 Jan 2022
-  changes added for pull request
-//}*/
-
-resource "aws_instance" "Terra-Demo" {
+  ami             = var.image_id
+  instance_type   = "t2.micro"
+  subnet_id       = "subnet-0d4382c62140ebfd4"
+  key_name        = "VPC"
   
-  ami           = "ami-001089eb624938d9f"
-  instance_type = "t2.micro"
-  subnet_id = "subnet-01a956015fff8a630"
-  key_name = "VPC"
- // key_name = "aws_key_pair.deployer.key_name"
-    
+  tags =local.common_tags
 
-  tags = {
-    Name = "TERRAFORM-EC2"
-    createdby= "terraform-2142"
-  }
 }
+
+  /*
+
+  resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = 
+  }
+ */
+
+
+
+  
+ 
