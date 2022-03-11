@@ -2,12 +2,12 @@
 locals {
   # Common tags to be assigned to all resources
   service_name= "Server"
-         owner="AWS"
+  owner       ="AWS"
         
   common_tags = {
-          name="local_Ec2"
-      Service = local.service_name
-      Owner   = local.owner
+  name        ="local_Ec2"
+  Service     = local.service_name
+  Owner       = local.owner
   }
 }
 
@@ -17,9 +17,13 @@ resource "aws_instance" "Terra-Demo-EC2" {
   instance_type   = "t2.micro"
   subnet_id       = "subnet-0d4382c62140ebfd4"
   key_name        = "VPC"
-  
-  tags =local.common_tags
+  tags            = local.common_tags
 
+}
+
+output "public_ip" {
+  value           = aws_instance.Terra-Demo-EC2.public_ip 
+  
 }
 
   /*
